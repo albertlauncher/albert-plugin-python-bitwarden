@@ -2,6 +2,8 @@
 
 """'rbw' wrapper extension."""
 
+#  Copyright (c) 2022 Manuel Schneider
+
 import fnmatch
 import os
 from subprocess import run
