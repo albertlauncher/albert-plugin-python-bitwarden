@@ -13,7 +13,7 @@ md_version = "3.1"
 md_name = "Bitwarden"
 md_description = "'rbw' wrapper extension"
 md_license = "MIT"
-md_url = "https://github.com/albertlauncher/python/tree/main/bitwarden"
+md_url = "https://github.com/albertlauncher/albert-plugin-python-bitwarden"
 md_authors = ["@ovitor", "@daviddeadly", "@manuelschneid3r"]
 md_bin_dependencies = ["rbw"]
 
