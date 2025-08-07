@@ -9,12 +9,12 @@ from subprocess import CalledProcessError, run
 from albert import *
 
 md_iid = "3.0"
-md_version = "3.1"
+md_version = "3.2"
 md_name = "Bitwarden"
 md_description = "'rbw' wrapper extension"
 md_license = "MIT"
 md_url = "https://github.com/albertlauncher/albert-plugin-python-bitwarden"
-md_authors = ["@ovitor", "@daviddeadly", "@manuelschneid3r"]
+md_authors = ["@ovitor", "@daviddeadly", "@ManuelSchneid3r"]
 md_bin_dependencies = ["rbw"]
 
 MAX_MINUTES_CACHE_TIMEOUT = 60
