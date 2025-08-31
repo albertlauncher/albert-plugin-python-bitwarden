@@ -14,7 +14,8 @@ md_name = "Bitwarden"
 md_description = "'rbw' wrapper extension"
 md_license = "MIT"
 md_url = "https://github.com/albertlauncher/albert-plugin-python-bitwarden"
-md_authors = ["@ovitor", "@daviddeadly", "@ManuelSchneid3r"]
+md_readme_url = "https://github.com/albertlauncher/albert-plugin-python-bitwarden/blob/main/README.md"
+md_authors = ["@ovitor", "@davroid", "@ManuelSchneid3r"]
 md_bin_dependencies = ["rbw"]
 
 MAX_MINUTES_CACHE_TIMEOUT = 60
