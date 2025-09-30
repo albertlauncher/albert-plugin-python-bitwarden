@@ -2,13 +2,12 @@
 
 import time
 from dataclasses import dataclass
-from enum import Enum
 from pathlib import Path
 from subprocess import CalledProcessError, run
 
 from albert import *
 
-md_iid = "3.0"
+md_iid = "4.0"
 md_version = "3.2"
 md_name = "Bitwarden"
 md_description = "'rbw' wrapper extension"
@@ -31,8 +30,6 @@ class Plugin(PluginInstance, TriggerQueryHandler):
     _cached_items = None
     _last_fetch_time = 0
 
-    iconUrls = [f"file:{Path(__file__).parent}/bw.svg"]
-
     def __init__(self):
         PluginInstance.__init__(self)
         TriggerQueryHandler.__init__(self)
@@ -53,6 +50,10 @@ class Plugin(PluginInstance, TriggerQueryHandler):
     def cache_timeout(self, value):
         self._cache_timeout = int(value * 60)
         self.writeConfig(ConfigKeys.CACHE_TIMEOUT, value)
+
+    @staticmethod
+    def makeIcon():
+        return makeImageIcon(Path(__file__).parent / "bw.svg")
 
     def configWidget(self):
         return [
@@ -75,7 +76,7 @@ class Plugin(PluginInstance, TriggerQueryHandler):
                 StandardItem(
                     id="sync",
                     text="Sync Bitwarden Vault",
-                    iconUrls=self.iconUrls,
+                    iconFactory=self.makeIcon,
                     actions=[
                         Action(
                             id="sync",
@@ -92,7 +93,7 @@ class Plugin(PluginInstance, TriggerQueryHandler):
                     id=p["id"],
                     text=p["path"],
                     subtext=p["user"],
-                    iconUrls=self.iconUrls,
+                    iconFactory=self.makeIcon,
                     actions=[
                         Action(
                             id="copy",
