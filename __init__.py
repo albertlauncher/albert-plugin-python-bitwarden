@@ -76,7 +76,7 @@ class Plugin(PluginInstance, TriggerQueryHandler):
                 StandardItem(
                     id="sync",
                     text="Sync Bitwarden Vault",
-                    iconFactory=self.makeIcon,
+                    icon_factory=self.makeIcon,
                     actions=[
                         Action(
                             id="sync",
@@ -93,7 +93,7 @@ class Plugin(PluginInstance, TriggerQueryHandler):
                     id=p["id"],
                     text=p["path"],
                     subtext=p["user"],
-                    iconFactory=self.makeIcon,
+                    icon_factory=self.makeIcon,
                     actions=[
                         Action(
                             id="copy",
