@@ -7,7 +7,7 @@ from subprocess import CalledProcessError, run
 
 from albert import *
 
-md_iid = "4.0"
+md_iid = "5.0"
 md_version = "3.2.1"
 md_name = "Bitwarden"
 md_description = "'rbw' wrapper extension"
@@ -26,13 +26,13 @@ class ConfigKeys:
     CACHE_TIMEOUT = "cache_timeout"
 
 
-class Plugin(PluginInstance, TriggerQueryHandler):
+class Plugin(PluginInstance, GeneratorQueryHandler):
     _cached_items = None
     _last_fetch_time = 0
 
     def __init__(self):
         PluginInstance.__init__(self)
-        TriggerQueryHandler.__init__(self)
+        GeneratorQueryHandler.__init__(self)
 
         self.cache_timeout = (
             self.readConfig(ConfigKeys.CACHE_TIMEOUT, int)
@@ -69,9 +69,9 @@ class Plugin(PluginInstance, TriggerQueryHandler):
             },
         ]
 
-    def handleTriggerQuery(self, query):
+    def items(self, ctx):
         results = []
-        if query.string.strip().lower() == "sync":
+        if ctx.query.strip().lower() == "sync":
             results.append(
                 StandardItem(
                     id="sync",
@@ -87,7 +87,7 @@ class Plugin(PluginInstance, TriggerQueryHandler):
                 )
             )
 
-        for p in self._filter_items(query):
+        for p in self._filter_items(ctx.query):
             results.append(
                 StandardItem(
                     id=p["id"],
@@ -121,7 +121,7 @@ class Plugin(PluginInstance, TriggerQueryHandler):
                 )
             )
 
-        query.add(results)
+        yield [results]
 
     def _get_items(self):
         not_first_time = self._cached_items is not None
