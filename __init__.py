@@ -53,7 +53,7 @@ class Plugin(PluginInstance, GeneratorQueryHandler):
 
     @staticmethod
     def makeIcon():
-        return makeImageIcon(Path(__file__).parent / "bw.svg")
+        return Icon.image(Path(__file__).parent / "bw.svg")
 
     def configWidget(self):
         return [
