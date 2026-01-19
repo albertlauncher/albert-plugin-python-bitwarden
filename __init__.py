@@ -8,7 +8,7 @@ from subprocess import CalledProcessError, run
 from albert import *
 
 md_iid = "5.0"
-md_version = "3.2.1"
+md_version = "3.2.2"
 md_name = "Bitwarden"
 md_description = "'rbw' wrapper extension"
 md_license = "MIT"
