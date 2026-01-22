@@ -121,7 +121,7 @@ class Plugin(PluginInstance, GeneratorQueryHandler):
                 )
             )
 
-        yield [results]
+        yield results
 
     def _get_items(self):
         not_first_time = self._cached_items is not None
