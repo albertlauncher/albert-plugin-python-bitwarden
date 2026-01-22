@@ -121,7 +121,7 @@ class Plugin(PluginInstance, GeneratorQueryHandler):
                 )
             )
 
-        yield [results]
+        yield results
 
     def _get_items(self):
         not_first_time = self._cached_items is not None
@@ -162,7 +162,7 @@ class Plugin(PluginInstance, GeneratorQueryHandler):
         passwords = self._get_items() or []
         search_fields = ["path", "user"]
         # Use a set for faster membership tests
-        words = set(query.string.strip().lower().split())
+        words = set(query.strip().lower().split())
 
         filtered_passwords = []
 
