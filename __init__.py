@@ -16,6 +16,7 @@ md_url = "https://github.com/albertlauncher/albert-plugin-python-bitwarden"
 md_readme_url = "https://github.com/albertlauncher/albert-plugin-python-bitwarden/blob/main/README.md"
 md_authors = ["@ovitor", "@davroid", "@ManuelSchneid3r"]
 md_bin_dependencies = ["rbw"]
+md_maintainers = ["@poettig"]
 
 MAX_MINUTES_CACHE_TIMEOUT = 60
 DEFAULT_MINUTE_CACHE_TIMEOUT = 5
