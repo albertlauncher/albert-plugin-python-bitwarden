@@ -114,6 +114,11 @@ class Plugin(PluginInstance, GeneratorQueryHandler):
                             ),
                         ),
                         Action(
+                            id="copy-name",
+                            text="Copy name to clipboard",
+                            callable=lambda name=p["path"]: setClipboardText(text=name),
+                        ),
+                        Action(
                             id="edit",
                             text="Edit entry in terminal",
                             callable=lambda item=p: self._edit_entry(item),
