@@ -14,7 +14,7 @@ md_description = "'rbw' wrapper extension"
 md_license = "MIT"
 md_url = "https://github.com/albertlauncher/albert-plugin-python-bitwarden"
 md_readme_url = "https://github.com/albertlauncher/albert-plugin-python-bitwarden/blob/main/README.md"
-md_authors = ["@ovitor", "@davroid", "@ManuelSchneid3r"]
+md_authors = ["@ovitor", "@davroid", "@ManuelSchneid3r", "@bergercookie"]
 md_bin_dependencies = ["rbw"]
 md_maintainers = ["@poettig"]
 
@@ -88,7 +88,25 @@ class Plugin(PluginInstance, GeneratorQueryHandler):
                 )
             )
 
-        for p in self._filter_items(ctx.query):
+        try:
+            entries = self._filter_items(ctx.query)
+        except (CalledProcessError, OSError) as err:
+            detail = getattr(err, "stderr", None) or str(err)
+            if isinstance(detail, bytes):
+                detail = detail.decode("utf-8", "replace")
+            results.append(
+                StandardItem(
+                    id="bitwarden-error",
+                    text="Could not read Bitwarden entries",
+                    subtext=" ".join(detail.split()),
+                    icon_factory=self.makeIcon,
+                    actions=[],
+                )
+            )
+            yield results
+            return
+
+        for p in entries:
             results.append(
                 StandardItem(
                     id=p["id"],
